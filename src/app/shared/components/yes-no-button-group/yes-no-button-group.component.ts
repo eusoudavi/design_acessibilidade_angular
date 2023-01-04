@@ -9,6 +9,7 @@ export class YesNoButtonGroupComponent implements OnInit {
 
   @Input() public value: string = null;
   @Input() public label = '';
+  public options = YesNoButtonGroupOptions;
 
   constructor() { }
 
@@ -19,4 +20,9 @@ export class YesNoButtonGroupComponent implements OnInit {
     this.value = value;
   }
 
+}
+
+enum YesNoButtonGroupOptions {
+    YES = 'yes',
+    NO = 'no'
 }
