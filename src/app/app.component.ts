@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'a11y-p1';
   public form: FormGroup = null;
-  public teste: string = null;
 
   constructor(formBuilder: FormBuilder) {
     this.form = formBuilder.group({

@@ -42,26 +42,50 @@ ng update @angular/material@13 --allow-dirty --force
 
 Nesse ponto, o projeto está rodando com o Angular na versão 13 e é compatível com o Node LTS (18.12.1)
 
-## Development server
+## Servidor Angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Start Server
 
-## Code scaffolding
+Digite `ng serve` para iniciar o servidor. Também é possível iniciar o servidor com o comando `npm run start`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O site estará disponível em `http://localhost:4200/`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Estrutura de projeto Angular
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Acessibilidade
+
+Como referência para a acessibildade, podemos utilizar o material da Wer Accessibility
+ Initiative (WAI) da W3C
+
+O princípio por trás disso é criar áreas que tenham uma semantica para que os leitores de página possam entender o que está por trás dos textos.
+
+O mais indicado é utilziar tags que tenham valor semântico, porém, caso não seja possível e/ou deseje utilizar outras tags, podemos persolizar a semântica de uma tag.
+
+### Aplicação
+
+No nosso projeto, utilizamos `role="radiogroup"` dentro da tag <div> para que o leitor da página entendesse a sua semântica.
+
+Utilizamos `aria-labelledby="label"` para que o leitor da página soubesse onde encontraria a label do *radiogroup*.
+
+Queremos que os botões sejam lidos como *radio button*. Logo, utilizamos `role="radio"` dentro dos botões para que o comportameto da acessibilidade da página fosse conforme o ideal de acordo com a W3C.
+
+Após esses passos acima, o que falta é informar ao leitor que determinado botão está ou não marcado.
+Para isso usamos o elemento `aria-checked`.
+
+Como vamos modificar esse elemento conforme interagimos com a página, utilizamos `attrr.` antes desse elemento.
+Fica da seguinte forma: `[attr.aria-checked]="value === options.NO"`.
