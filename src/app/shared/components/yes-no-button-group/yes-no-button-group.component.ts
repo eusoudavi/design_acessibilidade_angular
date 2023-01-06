@@ -1,7 +1,6 @@
 import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import * as uuid from 'uuid';
-
+import {UniqueIdServices} from '../../services/unique-id/unique-id.services';
 @Component({
   selector: 'app-yes-no-button-group',
   templateUrl: './yes-no-button-group.component.html',
@@ -23,9 +22,10 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
   public onChange = (value: string) => {};
   public onTouched = () => { };
 
-  constructor() {
-    this.id = `yes-no-button-group-${uuid.v1()}`;
+  constructor(private uniqueIdService: UniqueIdServices) {
+    this.id = uniqueIdService.generateUniqueIdWithPrefix('yes-no-button-group');
   }
+  // COMO TEMOS UMA BIBLIOTECA QUE SERÁ USADA EM VÁRIOS COMPONENTES DO PROJETO, CENTRALIZAMOS ELA EM UMA CLASSE PARA REAPROVEITARMOS O COD
 
   ngOnInit(): void {
   }
