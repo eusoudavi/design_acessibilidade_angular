@@ -1,4 +1,5 @@
-import {Directive, HostListener} from '@angular/core';
+import {ContentChild, ContentChildren, Directive, HostListener, QueryList} from '@angular/core';
+import {KeyboardManagerItemDirectives} from './keyboard-manager-item.directives';
 
 @Directive({
   selector: '[appKm]'
@@ -6,21 +7,42 @@ import {Directive, HostListener} from '@angular/core';
 // tslint:disable-next-line:directive-class-suffix
 export class KeyboardManagerDirectives {
 
+  @ContentChildren(KeyboardManagerItemDirectives) public items: QueryList<KeyboardManagerItemDirectives> = null;
+
   @HostListener('keyup', ['$event'])
-  public manageKeys(event: KeyboardEvent): void{
-  switch (event.key){
-    case 'ArrowUp':
-      console.log('up');
-      break;
-    case 'ArrowDown':
-      console.log('down');
-      break;
-    case 'ArrowLeft':
-      console.log('left');
-      break;
-    case 'ArrowRight':
-      console.log('right');
-      break;
+  public manageKeys(event: KeyboardEvent): void {
+    switch (event.key) {
+      case 'ArrowUp':
+        console.log('up');
+        this.moveFocus(ArrowDirection.RIGHT).focus();
+        break;
+      case 'ArrowDown':
+        console.log('down');
+        this.moveFocus(ArrowDirection.LEFT).focus();
+        break;
+      case 'ArrowLeft':
+        console.log('left');
+        this.moveFocus(ArrowDirection.LEFT).focus();
+        break;
+      case 'ArrowRight':
+        console.log('right');
+        this.moveFocus(ArrowDirection.RIGHT).focus();
+        break;
+    }
   }
+
+  public moveFocus(direction: ArrowDirection): KeyboardManagerItemDirectives {
+    const items = this.items.toArray();
+    const curentSelectedIndex = items.findIndex(item => item.isFocused());
+    const targetElementFocus = items[curentSelectedIndex + direction];
+    if (targetElementFocus) {
+      return targetElementFocus;
+    }
+    return direction === ArrowDirection.LEFT ? items[items.length - 1] : items[0];
   }
+}
+
+enum ArrowDirection {
+  LEFT = -1,
+  RIGHT = 1
 }

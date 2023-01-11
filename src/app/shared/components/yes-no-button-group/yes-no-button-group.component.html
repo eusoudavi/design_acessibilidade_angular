@@ -5,18 +5,24 @@
 
   <label [attr.id]="id" class="label">{{label}}</label>
 
-  <button role="radio"
+  <button appKmItem
+          (focused)="activate(options.YES)"
+          role="radio"
           [attr.tabindex]="value === options.YES || value == null ? 0 : -1"
           [attr.aria-checked]="value === options.YES"
           class="button button-yes"
           type="button" (click)="activate(options.YES)"
-          [class.button-pressed]="value === options.YES">Yes</button>
+          [class.button-pressed]="value === options.YES">Yes
+  </button>
 
-  <button role="radio"
+  <button appKmItem
+          (focused)="activate(options.NO)"
+          role="radio"
           [attr.tabindex]="value === options.NO ? 0 : -1"
           [attr.aria-checked]="value === options.NO"
           class="button button-no"
           type="button" (click)="activate(options.NO)"
-          [class.button-pressed]="value === options.NO">No</button>
+          [class.button-pressed]="value === options.NO">No
+  </button>
 
 </div>
