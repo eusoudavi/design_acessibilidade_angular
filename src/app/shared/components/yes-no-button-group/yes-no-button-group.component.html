@@ -8,6 +8,7 @@
   <button appKmItem
           (focused)="activate(options.YES)"
           role="radio"
+          [attr.disabled]="disabled ? disabled : null"
           [attr.tabindex]="value === options.YES || value == null ? 0 : -1"
           [attr.aria-checked]="value === options.YES"
           class="button button-yes"
@@ -15,9 +16,11 @@
           [class.button-pressed]="value === options.YES">Yes
   </button>
 
+<!--O ATRIBUTO DISABLED ESTÁ RELACIONADO À SUA PRESENÇA, OU SEJA, PARA NÃO FICAR DESABILITADO, O ATRIBUTO NÃO PODE EXISTIR/SER NULO-->
   <button appKmItem
           (focused)="activate(options.NO)"
           role="radio"
+          [attr.disabled]="disabled ? disabled : null"
           [attr.tabindex]="value === options.NO ? 0 : -1"
           [attr.aria-checked]="value === options.NO"
           class="button button-no"
