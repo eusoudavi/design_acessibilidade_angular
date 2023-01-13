@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {KeyboardManagerDirectives} from './keyboard-manager.directives';
-import {KeyboardManagerItemDirectives} from './keyboard-manager-item.directives';
+import {KeyboardManagerDirective} from './keyboard-manager.directive';
+import {KeyboardManagerItemDirective} from './keyboard-manager-item.directive';
 
 @NgModule({
   declarations: [
-    KeyboardManagerDirectives,
-    KeyboardManagerItemDirectives
+    KeyboardManagerDirective,
+    KeyboardManagerItemDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    KeyboardManagerDirectives,
-    KeyboardManagerItemDirectives
+    KeyboardManagerDirective,
+    KeyboardManagerItemDirective
   ]
 })
 export class KeyboardManagerModule{}

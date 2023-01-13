@@ -3,8 +3,7 @@ import {Directive, ElementRef, EventEmitter, Output} from '@angular/core';
 @Directive({
   selector: '[appKmItem]'
 })
-// tslint:disable-next-line:directive-class-suffix
-export class KeyboardManagerItemDirectives {
+export class KeyboardManagerItemDirective {
 
   @Output() public focused = new EventEmitter<void>();
 

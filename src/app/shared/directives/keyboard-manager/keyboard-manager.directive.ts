@@ -1,13 +1,12 @@
 import {ContentChild, ContentChildren, Directive, HostListener, QueryList} from '@angular/core';
-import {KeyboardManagerItemDirectives} from './keyboard-manager-item.directives';
+import {KeyboardManagerItemDirective} from './keyboard-manager-item.directive';
 
 @Directive({
   selector: '[appKm]'
 })
-// tslint:disable-next-line:directive-class-suffix
-export class KeyboardManagerDirectives {
+export class KeyboardManagerDirective {
 
-  @ContentChildren(KeyboardManagerItemDirectives) public items: QueryList<KeyboardManagerItemDirectives> = null;
+  @ContentChildren(KeyboardManagerItemDirective) public items: QueryList<KeyboardManagerItemDirective> = null;
 
   @HostListener('keyup', ['$event'])
   public manageKeys(event: KeyboardEvent): void {
@@ -31,7 +30,7 @@ export class KeyboardManagerDirectives {
     }
   }
 
-  public moveFocus(direction: ArrowDirection): KeyboardManagerItemDirectives {
+  public moveFocus(direction: ArrowDirection): KeyboardManagerItemDirective {
     const items = this.items.toArray();
     const curentSelectedIndex = items.findIndex(item => item.isFocused());
     const targetElementFocus = items[curentSelectedIndex + direction];
