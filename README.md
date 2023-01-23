@@ -28,7 +28,7 @@ Acrescentamos `"resolutions":{"webpack":"^5.0.0"}` ao `package.json`
 Repetimos o processo agora para migrarmos o Angular para a versão 12:
 
 ```
-ng update @angular/core@11 @angular/cli@11 --allow-dirty --force
+ng update @angular/core@12 @angular/cli@12 --allow-dirty --force
 ng update @angular/material@12 --allow-dirty --force
 ng update
 ```
@@ -36,7 +36,7 @@ ng update
 Agora já podemos migrar para a versão 13 com os seguintes procedimentos:
 
 ```
-npx @angular/cli@13 update @angular/core@13 @angular/cli@13 --allow-dirty --force
+np @angular/cli@13 update @angular/core@13 @angular/cli@13 --allow-dirty --force
 ng update @angular/material@13 --allow-dirty --force
 ```
 
